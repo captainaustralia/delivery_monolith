@@ -1,0 +1,3 @@
+[submodule "delivery_sys/core_delivery"]
+	path = delivery_sys/core_delivery
+	url = https://github.com/captainaustralia/core_delivery.git
