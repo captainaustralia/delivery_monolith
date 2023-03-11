@@ -1,4 +1,6 @@
+from datetime import timedelta
 from pathlib import Path
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -28,6 +30,7 @@ INSTALLED_APPS = [
     "core_delivery.orders",
     # libs
     "rest_framework",
+    "rest_framework_simplejwt",
     "phonenumber_field",
     "pythonjsonlogger"
 ]
@@ -119,3 +122,18 @@ AUTH_USER_MODEL = "users.DefaultUser"
 
 GDAL_LIBRARY_PATH = "/opt/homebrew/opt/gdal/lib/libgdal.dylib"
 GEOS_LIBRARY_PATH = "/opt/homebrew/opt/geos/lib/libgeos_c.dylib"
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+
+    "USER_ID_FIELD": "uuid",
+    "USER_ID_CLAIM": "user_uid",
+}
